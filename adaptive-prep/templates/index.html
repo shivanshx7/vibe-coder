@@ -1,30 +1,15 @@
-<!-- templates/index.html -->
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Adaptive Prep — Login</title>
-  <link rel="stylesheet" href="/static/style.css" />
+  <meta charset="utf-8">
+  <title>Adaptive Exam Prep</title>
+  <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-  <div class="container center">
-    <div class="card login-card">
-      <h1>Adaptive Exam Prep</h1>
-      <p>Enter a username to continue (local profile stored in data/users.json).</p>
-      <form method="POST">
-        <input name="username" placeholder="e.g. student1" />
-        <button type="submit">Continue</button>
-      </form>
-      <div class="small">
-        <strong>Existing users:</strong>
-        <ul>
-          {% for u in users %}
-          <li>{{ u }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+  <div class="center">
+    <h1>Adaptive Exam Preparation System</h1>
+    <p>Welcome! This planner adjusts automatically based on your performance, confidence, and learning habits.</p>
+    <a class="btn" href="/dashboard">Go to Dashboard</a>
   </div>
 </body>
 </html>

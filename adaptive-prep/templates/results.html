@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Results</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Results Overview</h2>
+
+    <h3>Strong Topics 💪</h3>
+    <ul>
+      {% for t in mastered %}
+      <li>{{ t.name }} (Mastery: {{ t.mastery }})</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Weak Topics ⚡</h3>
+    <ul>
+      {% for t in weak %}
+      <li>{{ t.name }} (Mastery: {{ t.mastery }})</li>
+      {% endfor %}
+    </ul>
+
+    <a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
+  </div>
+</body>
+</html>

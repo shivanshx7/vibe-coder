@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Confidence</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Rate your confidence (1-10):</h2>
+    <form method="POST">
+      {% for t in topics %}
+      <div class="card">
+        <label>{{ t.name }}</label>
+        <input type="number" name="{{ t.name }}_conf" min="1" max="10" value="{{ (t.confidence * 10) | round }}">
+      </div>
+      {% endfor %}
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</body>
+</html>

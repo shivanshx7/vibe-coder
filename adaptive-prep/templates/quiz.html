@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Enter your quiz scores (0.0 - 1.0):</h2>
+    <form method="POST">
+      {% for t in topics %}
+      <div class="card">
+        <label>{{ t.name }}</label>
+        <input type="number" name="{{ t.name }}_score" step="0.1" min="0" max="1" value="{{ t.mastery }}">
+      </div>
+      {% endfor %}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

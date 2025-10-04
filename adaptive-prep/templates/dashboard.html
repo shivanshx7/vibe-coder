@@ -1,62 +1,53 @@
-
-<!-- templates/dashboard.html -->
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dashboard — Adaptive Prep</title>
-  <link rel="stylesheet" href="/static/style.css" />
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div class="topbar">
-    <div class="container top-inner">
-      <h2>Hello, {{ username }}</h2>
-      <div class="nav">
-        <a href="/quiz">Take Quiz</a>
-        <a href="/confidence">Update Confidence</a>
-        <a href="/update_plan">Recompute Plan</a>
-        <a href="/results">Results</a>
-        <a href="/logout">Logout</a>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <h3>Today's Plan</h3>
+  <header>
+    <h1>Adaptive Dashboard</h1>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/quiz">Quiz</a>
+      <a href="/confidence">Confidence</a>
+      <a href="/recompute">Recompute</a>
+      <a href="/results">Results</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <h2>Your Study Plan</h2>
+    <form action="/recompute" method="get">
+      <button type="submit">🔄 Recompute Plan</button>
+    </form>
     <div class="grid">
-      {% for session in plan.plan %}
-      <div class="card topic-card">
-        <h4>{{ session.topic }}</h4>
-        <p>Type: {{ session.type }}</p>
-        <p>Duration: {{ session.duration }} min</p>
-        <p>Priority: {{ session.priority }}</p>
+      {% for item in plan.plan %}
+      <div class="card">
+        <h3>{{ item.topic }}</h3>
+        <p><b>Mode:</b> {{ item.type }}</p>
+        <p><b>Duration:</b> {{ item.duration }} mins</p>
+        <p><b>Priority:</b> {{ item.priority }}</p>
         <div class="progress">
-          <div class="bar" style="width: {{ (topics|selectattr('name','equalto',session.topic)|list)[0].mastery * 100 }}%"></div>
+          <div class="bar" style="width: 100%;"></div>
         </div>
       </div>
       {% endfor %}
     </div>
 
-    <h3>All Topics</h3>
-    <div class="grid">
-      {% for t in topics %}
-      <div class="card small-card">
-        <h4>{{ t.name }}</h4>
-        <p>Mastery: {{ t.mastery }}</p>
-        <p>Confidence: {{ t.confidence }}</p>
-        <p>Priority: {{ t.priority }}</p>
-      </div>
-      {% endfor %}
-    </div>
-
-    <div class="suggestions card">
-      <h4>Suggestions</h4>
+    <div class="card">
+      <h3>Suggestions</h3>
+      {% if plan.suggestions %}
       <ul>
         {% for s in plan.suggestions %}
         <li>{{ s }}</li>
         {% endfor %}
       </ul>
+      {% else %}
+      <p>No new suggestions today!</p>
+      {% endif %}
     </div>
-  </div>
+  </section>
 </body>
 </html>

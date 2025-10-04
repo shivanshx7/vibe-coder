@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Recomputed Plan</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>✅ Your plan has been recomputed!</h2>
+    <a class="btn" href="/dashboard">Go back to Dashboard</a>
+    <div class="grid">
+      {% for item in plan.plan %}
+      <div class="card">
+        <h3>{{ item.topic }}</h3>
+        <p>Mode: {{ item.type }}</p>
+        <p>Duration: {{ item.duration }} mins</p>
+        <p>Priority: {{ item.priority }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
