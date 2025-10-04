@@ -1,3 +1,4 @@
+
 <!-- templates/dashboard.html -->
 <!doctype html>
 <html>
@@ -30,8 +31,7 @@
         <p>Duration: {{ session.duration }} min</p>
         <p>Priority: {{ session.priority }}</p>
         <div class="progress">
-           <div class="bar" style="width: sessionwidth "></div>
-
+          <div class="bar" style="width: {{ (topics|selectattr('name','equalto',session.topic)|list)[0].mastery * 100 }}%"></div>
         </div>
       </div>
       {% endfor %}
