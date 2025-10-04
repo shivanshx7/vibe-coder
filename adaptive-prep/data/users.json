@@ -1,0 +1,10 @@
+
+{
+  "student1": {
+    "preferences": { "modes": ["Practice", "Revision", "Concept"], "daily_sessions": 3, "daily_topics": 3 },
+    "missed_sessions": 1,
+    "completed_sessions": 2,
+    "attention_span": 45,
+    "last_plan_update": null
+  }
+}
